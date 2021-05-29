@@ -44,6 +44,13 @@ namespace Kutyák
                 $"{kutyaNevek.First(x => x.Id == k.NévId).Név}, " +
                 $"{kutyaFajták.First(x => x.Id == k.FajtaId).Fajta}");
 
+            //8.
+            kutyák.Where(x => x.UtolsóKezelés == DateTime.Parse("2018-01-10"))
+                .GroupBy(x => x.FajtaId)
+                .Select(gr => new { Fajta = kutyaFajták.First(x => x.Id == gr.Key).Fajta, db = gr.Count() })
+                .ToList()
+                .ForEach(x => Console.WriteLine($"\t{x.Fajta}: {x.db} kutya"));
+
             Console.ReadKey();
         }
     }
