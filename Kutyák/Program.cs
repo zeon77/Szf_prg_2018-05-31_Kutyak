@@ -37,6 +37,13 @@ namespace Kutyák
             //6.
             Console.WriteLine($"6. feladat: Kutyák átlag életkora: {kutyák.Average(x => x.Életkor):0.00}");
 
+            //7.
+            var k = kutyák.OrderByDescending(x => x.Életkor).First();
+            Console.WriteLine(
+                $"7. feladat: Legidősebb kutya neve és fajtája: " +
+                $"{kutyaNevek.First(x => x.Id == k.NévId).Név}, " +
+                $"{kutyaFajták.First(x => x.Id == k.FajtaId).Fajta}");
+
             Console.ReadKey();
         }
     }
