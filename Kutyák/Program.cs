@@ -27,6 +27,13 @@ namespace Kutyák
                 kutyaFajták.Add(new KutyaFajta(sor));
             }
 
+            //5.
+            List<Kutya> kutyák = new List<Kutya>();
+            foreach (var sor in File.ReadAllLines("Kutyak.csv").Skip(1))
+            {
+                kutyák.Add(new Kutya(sor));
+            }
+
             Console.ReadKey();
         }
     }
