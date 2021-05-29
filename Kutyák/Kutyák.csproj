@@ -52,9 +52,15 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="feladat_szf_prg_180531.pdf" />
-    <None Include="KutyaFajtak.csv" />
-    <None Include="Kutyak.csv" />
-    <None Include="KutyaNevek.csv" />
+    <None Include="KutyaFajtak.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Kutyak.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="KutyaNevek.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
