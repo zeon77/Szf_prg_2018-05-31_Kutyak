@@ -20,6 +20,13 @@ namespace Kutyák
             //3.
             Console.WriteLine($"3. feladat: Kutyanevek száma: {kutyaNevek.Count}");
 
+            //4.
+            List<KutyaFajta> kutyaFajták = new List<KutyaFajta>();
+            foreach (var sor in File.ReadAllLines("KutyaFajtak.csv").Skip(1))
+            {
+                kutyaFajták.Add(new KutyaFajta(sor));
+            }
+
             Console.ReadKey();
         }
     }
