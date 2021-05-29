@@ -51,6 +51,12 @@ namespace Kutyák
                 .ToList()
                 .ForEach(x => Console.WriteLine($"\t{x.Fajta}: {x.db} kutya"));
 
+            //9.
+            var s = kutyák.GroupBy(x => x.UtolsóKezelés)
+                .Select(gr => new { Dátum = gr.Key, db = gr.Count() })
+                .OrderBy(x => x.db).Last();
+            Console.WriteLine($"9. feladat: Legjobban leterhelt nap: {s.Dátum.ToString("yyyy.MM.dd.")}: {s.db} kutya");
+
             Console.ReadKey();
         }
     }
