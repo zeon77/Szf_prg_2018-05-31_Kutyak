@@ -34,6 +34,9 @@ namespace Kutyák
                 kutyák.Add(new Kutya(sor));
             }
 
+            //6.
+            Console.WriteLine($"6. feladat: Kutyák átlag életkora: {kutyák.Average(x => x.Életkor):0.00}");
+
             Console.ReadKey();
         }
     }
