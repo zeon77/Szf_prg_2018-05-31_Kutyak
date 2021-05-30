@@ -2,7 +2,7 @@
 
 namespace Kutyák
 {
-    class Kutya
+    class Vizsálat
     {
         public int Id { get; set; }
         public int FajtaId { get; set; }
@@ -10,7 +10,7 @@ namespace Kutyák
         public int Életkor { get; set; }
         public DateTime UtolsóKezelés { get; set; }
 
-        public Kutya(string sor)
+        public Vizsálat(string sor)
         {
             string[] s = sor.Split(';');
             Id = int.Parse(s[0]);

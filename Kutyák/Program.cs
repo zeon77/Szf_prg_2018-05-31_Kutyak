@@ -23,29 +23,29 @@ namespace Kutyák
                 kutyaFajták.Add(new KutyaFajta(sor));
 
             //5.
-            List<Kutya> kutyák = new List<Kutya>();
+            List<Vizsálat> vizsgálatok = new List<Vizsálat>();
             foreach (var sor in File.ReadAllLines("Kutyak.csv").Skip(1))
-                kutyák.Add(new Kutya(sor));
+                vizsgálatok.Add(new Vizsálat(sor));
 
             //6.
-            Console.WriteLine($"6. feladat: Kutyák átlag életkora: {kutyák.Average(x => x.Életkor):0.00}");
+            Console.WriteLine($"6. feladat: Kutyák átlag életkora: {vizsgálatok.Average(x => x.Életkor):0.00}");
 
             //7.
-            var k = kutyák.OrderByDescending(x => x.Életkor).First();
+            var k = vizsgálatok.OrderByDescending(x => x.Életkor).First();
             Console.WriteLine(
                 $"7. feladat: Legidősebb kutya neve és fajtája: " +
                 $"{kutyaNevek.First(x => x.Id == k.NévId).Név}, " +
                 $"{kutyaFajták.First(x => x.Id == k.FajtaId).Fajta}");
 
             //8.
-            kutyák.Where(x => x.UtolsóKezelés == DateTime.Parse("2018-01-10"))
+            vizsgálatok.Where(x => x.UtolsóKezelés == DateTime.Parse("2018-01-10"))
                 .GroupBy(x => x.FajtaId)
                 .Select(gr => new { Fajta = kutyaFajták.First(x => x.Id == gr.Key).Fajta, db = gr.Count() })
                 .ToList()
                 .ForEach(x => Console.WriteLine($"\t{x.Fajta}: {x.db} kutya"));
 
             //9.
-            var s = kutyák.GroupBy(x => x.UtolsóKezelés)
+            var s = vizsgálatok.GroupBy(x => x.UtolsóKezelés)
                 .Select(gr => new { Dátum = gr.Key, db = gr.Count() })
                 .OrderBy(x => x.db).Last();
             Console.WriteLine($"9. feladat: Legjobban leterhelt nap: {s.Dátum.ToString("yyyy.MM.dd.")}: {s.db} kutya");
@@ -54,7 +54,7 @@ namespace Kutyák
             Console.WriteLine($"10. feladat: névstatisztika.txt");
             string filename = "névstatisztika.txt";
             List<string> list = new List<string>();
-            kutyák.GroupBy(x => x.NévId)
+            vizsgálatok.GroupBy(x => x.NévId)
                 .Select(gr => new { Név = kutyaNevek.First(x => x.Id == gr.Key).Név, db = gr.Count() })
                 .OrderByDescending(x => x.db)
                 .ToList()
