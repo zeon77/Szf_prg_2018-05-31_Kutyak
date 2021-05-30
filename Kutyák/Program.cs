@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace Kutyák
@@ -12,10 +11,8 @@ namespace Kutyák
         {
             //2.
             List<KutyaNév> kutyaNevek = new List<KutyaNév>();
-            foreach (var sor in File.ReadAllLines("KutyaNevek.csv").Skip(1))
-            {
+            foreach (var sor in File.ReadAllLines("KutyaNevek.csv").Skip(1)) 
                 kutyaNevek.Add(new KutyaNév(sor));
-            }
 
             //3.
             Console.WriteLine($"3. feladat: Kutyanevek száma: {kutyaNevek.Count}");
@@ -23,16 +20,12 @@ namespace Kutyák
             //4.
             List<KutyaFajta> kutyaFajták = new List<KutyaFajta>();
             foreach (var sor in File.ReadAllLines("KutyaFajtak.csv").Skip(1))
-            {
                 kutyaFajták.Add(new KutyaFajta(sor));
-            }
 
             //5.
             List<Kutya> kutyák = new List<Kutya>();
             foreach (var sor in File.ReadAllLines("Kutyak.csv").Skip(1))
-            {
                 kutyák.Add(new Kutya(sor));
-            }
 
             //6.
             Console.WriteLine($"6. feladat: Kutyák átlag életkora: {kutyák.Average(x => x.Életkor):0.00}");
