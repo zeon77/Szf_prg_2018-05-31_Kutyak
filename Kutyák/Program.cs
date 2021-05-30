@@ -57,6 +57,17 @@ namespace Kutyák
                 .OrderBy(x => x.db).Last();
             Console.WriteLine($"9. feladat: Legjobban leterhelt nap: {s.Dátum.ToString("yyyy.MM.dd.")}: {s.db} kutya");
 
+            //10.
+            Console.WriteLine($"10. feladat: névstatisztika.txt");
+            string filename = "névstatisztika.txt";
+            List<string> list = new List<string>();
+            kutyák.GroupBy(x => x.NévId)
+                .Select(gr => new { Név = kutyaNevek.First(x => x.Id == gr.Key).Név, db = gr.Count() })
+                .OrderByDescending(x => x.db)
+                .ToList()
+                .ForEach(x => list.Add($"{x.Név};{x.db}"));
+            File.WriteAllLines(filename, list);
+
             Console.ReadKey();
         }
     }
